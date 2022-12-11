@@ -1,7 +1,6 @@
 import pytest
 from selene.support.shared import browser
 
-
 @pytest.fixture(scope="session")
 def br_set():
     browser.config.window_width = 1920

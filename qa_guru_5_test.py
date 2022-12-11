@@ -36,6 +36,7 @@ def test_form(br_set):
     browser.element('[id="submit"]').press_enter()
     browser.all("tbody tr").should(have.size(10))
 #Проверка корректности введенных данных
+
     browser.all('tbody tr td:last-child').should(have.texts(
         'Ilja Domnin',
         'domniniv@mail.ru',
