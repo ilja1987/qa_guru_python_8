@@ -3,8 +3,9 @@ import pytest
 from selene.support.shared import browser
 from selene import be, have
 
-#Заполнение данных
+
 def test_form(br_set):
+    browser.open("/automation-practice-form")
     browser.element('[id="firstName"]').type("Ilja").press_enter
     browser.element('[id="lastName"]').type("Domnin").press_enter
     browser.element('[id="userEmail"]').type("domniniv@mail.ru").press_enter
@@ -25,18 +26,17 @@ def test_form(br_set):
     browser.element('[for ="hobbies-checkbox-3"]').click()
     browser.element('#uploadPicture').set_value(
         os.path.abspath(
-            os.path.join(os.path.dirname(__file__),'tests/foto.bmp')
+            os.path.join(os.path.dirname(__file__), 'tests/foto.bmp')
         )
     )
-    browser.element('[id="currentAddress"]').type("Sad area, Dreary area, Sadness, Disappointment Avenue, house 13").press_enter
+    browser.element('[id="currentAddress"]').type(
+        "Sad area, Dreary area, Sadness, Disappointment Avenue, house 13").press_enter
     browser.element('[id="state"]').click()
     browser.element('[id="react-select-3-option-2"]').click()
     browser.element('[id="city"]').click()
     browser.element('[id="react-select-4-option-0"]').click()
     browser.element('[id="submit"]').press_enter()
     browser.all("tbody tr").should(have.size(10))
-#Проверка корректности введенных данных
-
     browser.all('tbody tr td:last-child').should(have.texts(
         'Ilja Domnin',
         'domniniv@mail.ru',
@@ -48,5 +48,3 @@ def test_form(br_set):
         'foto.bmp',
         'Sad area, Dreary area, Sadness, Disappointment Avenue, house 13',
         'Haryana Karnal'))
-
-
