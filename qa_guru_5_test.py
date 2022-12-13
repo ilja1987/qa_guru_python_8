@@ -5,13 +5,13 @@ from selene import have
 
 def test_form(browser_setup):
     browser.open("/automation-practice-form")
-    browser.element('[id="firstName"]').type('Ilja').press_enter
-    browser.element('[id="lastName"]').type('Domnin').press_enter
-    browser.element('[id="userEmail"]').type('domniniv@mail.ru').press_enter
+    browser.element('[id="firstName"]').type('Ilja')
+    browser.element('[id="lastName"]').type('Domnin')
+    browser.element('[id="userEmail"]').type('domniniv@mail.ru')
     browser.element('[for="gender-radio-1"]').click()
     browser.element('[for="gender-radio-2"]').click()
     browser.element('[for="gender-radio-3"]').click()
-    browser.element('[id="userNumber"]').type('89051010101').press_enter
+    browser.element('[id="userNumber"]').type('89051010101')
     browser.element('[id="dateOfBirthInput"]').click()
     browser.element('.react-datepicker__month-select').click()
     browser.element('[value="1"]').click()
@@ -29,7 +29,7 @@ def test_form(browser_setup):
         )
     )
     browser.element('[id="currentAddress"]').type(
-        'Sad area, Dreary area, Sadness, Disappointment Avenue, house 13').press_enter
+        'Sad area, Dreary area, Sadness, Disappointment Avenue, house 13')
     browser.element('[id="state"]').click()
     browser.element('[id="react-select-3-option-2"]').click()
     browser.element('[id="city"]').click()
