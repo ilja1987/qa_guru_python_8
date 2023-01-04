@@ -2,42 +2,6 @@ import os.path
 from selene.support.shared import browser
 from selene import have
 
-
-def test_form(browser_setup):
-    open_page()
-    fill_user_fields( 'Ilja',
-                      'Domnin',
-                      'domniniv@mail.ru',
-                      '89051010101',
-                      'Sad area, Dreary area, Sadness, Disappointment Avenue, house 13')
-
-    select_date_of_birthday(5,2,1987)
-
-    select_subjects('maths')
-    select_subjects('chemistry')
-
-    select_gender('Male')
-
-    select_hobbies('Reading')
-
-    upload_picture('../resources/foto.bmp')
-
-    select_state('NCR')
-    select_sity('Delhi')
-
-    push_submit_button()
-
-    asser_user_registration('Ilja Domnin',
-        'domniniv@mail.ru',
-        'Male',
-        '8905101010',
-        '05 February,1987',
-        'Maths, Chemistry',
-        'Reading',
-        'foto.bmp',
-        'Sad area, Dreary area, Sadness, Disappointment Avenue, house 13',
-        'NCR Delhi')
-
 def open_page():
     browser.open('/automation-practice-form')
 
@@ -66,7 +30,7 @@ def select_subjects(text):
 def upload_picture(path_to_photo):
     browser.element('#uploadPicture').set_value(
         os.path.abspath(
-            os.path.join(os.path.dirname(__file__), path_to_photo)
+            os.path.join(os.path.dirname(__file__), '../resources/'+ path_to_photo)
         )
     )
 
@@ -81,10 +45,10 @@ def select_date_of_birthday(day,month,year):
 def push_submit_button():
     browser.element('[id="submit"]').press_enter()
 
-def asser_user_registration(name,email,male,phone,birthday,subjects,hobbies,photo,adress,oprions):
+def asser_user_registration(name,email,male,phone,birthday,subjects,hobbies,photo,adress,options):
     browser.all("tbody tr").should(have.size(10))
     browser.all('tbody tr td:last-child').should(have.texts(
-        name,email,male,phone,birthday,subjects,hobbies,photo,adress,oprions))
+        name,email,male,phone,birthday,subjects,hobbies,photo,adress,options))
 
 def select_gender(gender):
     browser.element(f'[name=gender][value={gender}]+label').click()
