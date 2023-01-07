@@ -1,7 +1,5 @@
-import os.path
-from selene.support.shared import browser
-import tests.action as action
-from selene import have
+import actions.action as action
+
 
 def fill_form(user):
     action.open_page()
@@ -11,7 +9,7 @@ def fill_form(user):
                             user.phone,
                             user.adress)
 
-    action.select_date_of_birthday(user.birthday[0],user.birthday[1],user.birthday[2])
+    action.select_date_of_birthday(user.birthday[0], user.birthday[1], user.birthday[2])
 
     action.select_subjects(user.subjects)
 
