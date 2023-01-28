@@ -1,5 +1,5 @@
 from classes.user import User
-from pages.practice_form import fill_form, assert_form
+from pages.practice_form import practice_form
 
 
 def test_final(browser_setup):
@@ -18,6 +18,9 @@ def test_final(browser_setup):
         sity='Delhi'
     )
 
-    fill_form(ilja)
+    practice_form.fill(ilja)
 
-    assert_form(ilja)
+    practice_form.assert_f(ilja)
+
+
+practice_form = practice_form()
