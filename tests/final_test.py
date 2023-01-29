@@ -1,7 +1,11 @@
 from classes.user import User
 from pages.practice_form import practice_form
+import allure
+from selene.support.shared import browser
+from utils import attach
 
 
+@allure.title('Тест на заполнение формы')
 def test_final(browser_setup):
     ilja = User(
         name='Andrew',
@@ -17,10 +21,14 @@ def test_final(browser_setup):
         state='NCR',
         sity='Delhi'
     )
+    with allure.step('Заполняем форму'):
+        practice_form.fill(ilja)
+    with allure.step('Проверяем корректность заполнения'):
+        practice_form.assert_f(ilja)
 
-    practice_form.fill(ilja)
-
-    practice_form.assert_f(ilja)
-
+    attach.add_screenshot(browser)
+    attach.add_html(browser)
+    attach.add_logs(browser)
+    attach.add_video(browser)
 
 practice_form = practice_form()
