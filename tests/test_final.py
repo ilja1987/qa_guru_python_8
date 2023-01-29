@@ -11,11 +11,11 @@ from selenium.webdriver.chrome.options import Options
 def test_final(browser_setup):
     options = Options()
     selenoid_capabilities = {
-        "browserName": "UNKNOWN",
-        "browserVersion": "",
+        "browserName": "chrome",
+        "browserVersion": "100.0",
         "selenoid:options": {
             "enableVNC": True,
-            "enableVideo": False
+            "enableVideo": True
         }
     }
     options.capabilities.update(selenoid_capabilities)
@@ -24,7 +24,7 @@ def test_final(browser_setup):
         command_executor="https://user1:1234@selenoid.autotests.cloud/wd/hub",
         options=options)
 
-    browser.config.driver=driver
+    browser.config.driver = driver
 
     ilja = User(
         name='Andrew',
@@ -49,5 +49,6 @@ def test_final(browser_setup):
     attach.add_html(browser)
     attach.add_logs(browser)
     attach.add_video(browser)
+
 
 practice_form = practice_form()
