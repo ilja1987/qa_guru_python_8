@@ -7,7 +7,7 @@ from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
 
 
-@allure.title('Тест на заполнение формы')
+@allure.title('Fill form test')
 def test_final(browser_setup):
     options = Options()
     selenoid_capabilities = {
@@ -19,8 +19,9 @@ def test_final(browser_setup):
         }
     }
     options.capabilities.update(selenoid_capabilities)
+
     driver = webdriver.Remote(
-        command_executor="http://user1:1234@selenoid.autotests.cloud/wd/hub",
+        command_executor="https://user1:1234@selenoid.autotests.cloud/wd/hub",
         options=options)
 
     browser.config.driver=driver
@@ -39,9 +40,9 @@ def test_final(browser_setup):
         state='NCR',
         sity='Delhi'
     )
-    with allure.step('Заполняем форму'):
+    with allure.step('Fill'):
         practice_form.fill(ilja)
-    with allure.step('Проверяем корректность заполнения'):
+    with allure.step('Test correct fill'):
         practice_form.assert_f(ilja)
 
     attach.add_screenshot(browser)
