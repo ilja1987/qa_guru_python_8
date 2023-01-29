@@ -3,28 +3,11 @@ from pages.practice_form import practice_form
 import allure
 from selene.support.shared import browser
 from utils import attach
-from selenium import webdriver
-from selenium.webdriver.chrome.options import Options
+
 
 
 @allure.title('Fill form test')
-def test_final(browser_setup):
-    options = Options()
-    selenoid_capabilities = {
-        "browserName": "chrome",
-        "browserVersion": "100.0",
-        "selenoid:options": {
-            "enableVNC": True,
-            "enableVideo": True
-        }
-    }
-    options.capabilities.update(selenoid_capabilities)
-
-    driver = webdriver.Remote(
-        command_executor="https://user1:1234@selenoid.autotests.cloud/wd/hub",
-        options=options)
-
-    browser.config.driver = driver
+def test_final():
 
     ilja = User(
         name='Andrew',
