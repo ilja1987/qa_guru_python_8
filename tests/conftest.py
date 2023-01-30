@@ -1,5 +1,4 @@
 import pytest
-import os
 from selene.support.shared import browser
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
@@ -25,7 +24,6 @@ def open_browser():
     }
 
     options.capabilities.update(selenoid_capabilities)
-
 
     driver = webdriver.Remote(
         command_executor=f"https://user1:1234@selenoid.autotests.cloud/wd/hub",
