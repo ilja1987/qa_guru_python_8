@@ -3,8 +3,8 @@
     "logo": "",
     "project": "https://qa.guru/",
     "environment": "Chrome 99",
-    "comment": "Report",
-    "reportLink": "",
+    "comment": "DomninIV_Report",
+    "reportLink": "https://jenkins.autotests.cloud/job/domnin_qa_guru_3_10/allure/",
     "language": "en",
     "allureFolder": "allure-report/",
     "enableChart": true
